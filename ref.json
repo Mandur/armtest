@@ -36,26 +36,6 @@
                     }
                 }
             ]
-        },
-        {
-            "name": "DashboardDeployment",
-            "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2015-01-01",
-            "dependsOn": [
-                "[resourceId('Microsoft.Web/sites/sourcecontrols', variables('functionAppName'),'web')]"
-            ],
-            "properties": {
-                "mode": "Incremental",
-                "templateLink": {
-                    "uri": "[Concat('https://raw.githubusercontent.com/',variables('gitUsername'),'/AzureSolutionTemplate/',variables('gitBranch'),'/helperTemplates/dashboarddeploy',parameters('dashboardDeploy'),'.json')]",
-                    "contentVersion": "1.0.0.0"
-                },
-                "parameters": {
-                    "dashboardSolutionPrefix": {
-                        "value": "[parameters('input')]"
-                    }
-                }
-            }
         }
     ]
 }

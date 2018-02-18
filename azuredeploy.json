@@ -30,6 +30,27 @@
             "resources": [
             ]
         }
+        ,
+        {
+            "name": "DashboardDeployment",
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2015-01-01",
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/sites/sourcecontrols', variables('functionAppName'),'web')]"
+            ],
+            "properties": {
+                "mode": "Incremental",
+                "templateLink": {
+                    "uri": "https://raw.githubusercontent.com/Mandur/armtest/master/ref.json",
+                    "contentVersion": "1.0.0.0"
+                },
+                "parameters": {
+                    "dashboardSolutionPrefix": {
+                        "value": "[parameters('input')]"
+                    }
+                }
+            }
+        }
             
     ]
 }
