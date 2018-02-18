@@ -16,15 +16,7 @@
                 "name": "[parameters('input').name]",
                 "type": "Microsoft.Sql/servers",
                 "location": "[resourceGroup().location]",
-                "tags": {
-                    "displayName": "SqlServer"
-                },
-                "apiVersion": "2014-04-01",
-                "properties": {
-                    "administratorLogin": "[parameters('input').login]",
-                    "administratorLoginPassword": "[parameters('input').pass]",
-                    "version": "12.0"
-                },
+
                 "resources": [
                 {
                     "name": "[parameters('input').name]",
@@ -35,7 +27,7 @@
                     },
                     "apiVersion": "2015-01-01",
                     "dependsOn": [
-                        "[parameters('input').name]"
+                        "[resourceId('Microsoft.Sql/servers', parameters('input').name)]"
                     ],
                     "properties": {
                         "edition": "Basic",
