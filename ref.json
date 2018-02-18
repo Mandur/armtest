@@ -12,7 +12,6 @@
     "variables": {},
     "resources": [
         {
-
                 "name": "[parameters('input').name]",
                 "type": "Microsoft.Sql/servers",
                 "location": "[resourceGroup().location]",
